@@ -17,6 +17,7 @@ lazy val root = (project in file("."))
     name := "xslt-as-a-service",
     libraryDependencies ++= Seq(
       "uk.co.danielrendall" %% "services-as-a-service-interfaces" % "0.0.1-SNAPSHOT",
+      "net.sf.saxon" % "Saxon-HE" % "10.5",
       "org.nanohttpd" % "nanohttpd" % "2.3.1" % Provided
     ),
     packageOptions := Seq(ManifestAttributes(
