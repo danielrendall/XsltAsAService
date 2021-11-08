@@ -11,7 +11,7 @@ if necessary) and saving the results.
 
 **This is intended for use on a machine not accessible from the internet. The
 server is built around the idea of remote code execution - it should not be made
-available to scamps and scallywags who might do naughty things with it**
+available to scamps and scallywags who might do naughty things with it.**
 
 ## Usage
 
@@ -41,6 +41,8 @@ curl -XPOST --data-binary @some_xml.xml http://localhost:1810/xslt/first > some_
 Note - use the `--http1.0` flag in your `curl` to avoid irritating 1s delays
 
 ## Status
+
+WARNING - this is also pretty much untested at the moment
 
 * Needs proper documentation
 * And also some actual tests
