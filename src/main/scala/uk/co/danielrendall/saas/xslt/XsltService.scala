@@ -2,6 +2,7 @@ package uk.co.danielrendall.saas.xslt
 
 import fi.iki.elonen.NanoHTTPD.Response
 import fi.iki.elonen.NanoHTTPD.Response.Status
+import net.sf.saxon.TransformerFactoryImpl
 import uk.co.danielrendall.saas.interfaces.*
 import uk.co.danielrendall.saas.xslt.Exceptions.*
 
@@ -17,7 +18,7 @@ class XsltService
   extends Serviceable
   with ResponseHelpers:
 
-  private lazy val tf: TransformerFactory = TransformerFactory.newInstance()
+  private lazy val tf: TransformerFactory =  new TransformerFactoryImpl()
 
   /**
    * Map of user-visible name of XSLT to the MD5 hash of that XSLT; so if we have the same XSLT bound to a number of
@@ -68,6 +69,7 @@ class XsltService
       _ <- saveParams(first, session.reducedQueryParameters)
     } yield ()) match {
       case Failure(ex) =>
+        ex.printStackTrace()
         badRequest(ex.getMessage)
       case Success(_) =>
         ok(s"Put $first")
